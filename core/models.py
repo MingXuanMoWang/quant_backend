@@ -15,3 +15,9 @@ class BacktestRecord(Base):
     final_cash = Column(Float)
     total_return = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
+class MarketSignal(Base):
+    __tablename__ = "market_signals"
+    id = Column(Integer, primary_key=True)
+    symbol = Column(String, index=True)
+    signal = Column(Float)  # 1表示买入，0表示不操作
+    updated_at = Column(DateTime, default=datetime.utcnow)
